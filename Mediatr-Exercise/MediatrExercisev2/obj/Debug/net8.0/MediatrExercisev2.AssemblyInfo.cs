@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MediatrExercisev2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3c7404d7c7ce19c8691557bd19e100a1af9f5a9b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce5581c97aa03fe999705d54ecd6f4f9c34c4660")]
 [assembly: System.Reflection.AssemblyProductAttribute("MediatrExercisev2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MediatrExercisev2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

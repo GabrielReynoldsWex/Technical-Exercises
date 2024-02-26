@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Mediatr-UI-Project.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fee0b092f8f9ea80ab9a9393c64b6dfe007316b1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce5581c97aa03fe999705d54ecd6f4f9c34c4660")]
 [assembly: System.Reflection.AssemblyProductAttribute("Mediatr-UI-Project.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Mediatr-UI-Project.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

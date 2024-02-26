@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj": {}
+    "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises-2\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj": {
+    "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises-2\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj",
+        "projectUniqueName": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises-2\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj",
         "projectName": "MediatrExercisev2",
-        "projectPath": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj",
+        "projectPath": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises-2\\Mediatr-Exercise\\MediatrExercisev2\\MediatrExercisev2.csproj",
         "packagesPath": "C:\\Users\\W514215\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises\\Mediatr-Exercise\\MediatrExercisev2\\obj\\",
+        "outputPath": "C:\\Users\\W514215\\Documents\\GitHub\\Technical-Exercises-2\\Mediatr-Exercise\\MediatrExercisev2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\W514215\\AppData\\Roaming\\NuGet\\NuGet.Config",
