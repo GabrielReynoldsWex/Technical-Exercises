@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mediatr-UI-Project.Server", "Mediatr-UI-Project.Server\Mediatr-UI-Project.Server.csproj", "{64CE55A9-A1CF-4992-B592-AAE4D3E2FE1F}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "mediatr-ui-project.client", "mediatr-ui-project.client\mediatr-ui-project.client.esproj", "{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64CE55A9-A1CF-4992-B592-AAE4D3E2FE1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64CE55A9-A1CF-4992-B592-AAE4D3E2FE1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64CE55A9-A1CF-4992-B592-AAE4D3E2FE1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64CE55A9-A1CF-4992-B592-AAE4D3E2FE1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{486F7D7A-3B36-4F38-B6BB-ED51E91876AB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A237EB0D-B5F0-4288-AFBB-05267AF65C48}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Mediatr-UI-Project.Server.props" />
+</Project>

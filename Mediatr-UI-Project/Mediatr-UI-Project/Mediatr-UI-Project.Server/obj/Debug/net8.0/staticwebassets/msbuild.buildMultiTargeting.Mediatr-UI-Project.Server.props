@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Mediatr-UI-Project.Server.props" />
+</Project>
