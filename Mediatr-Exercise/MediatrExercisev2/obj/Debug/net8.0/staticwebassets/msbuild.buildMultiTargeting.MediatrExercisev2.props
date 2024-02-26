@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MediatrExercisev2.props" />
+</Project>
