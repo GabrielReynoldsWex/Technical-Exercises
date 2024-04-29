@@ -1,0 +1,38 @@
+﻿@MinimalApiExercise_HostAddress = https://localhost:7046
+
+POST {{MinimalApiExercise_HostAddress}}/todoitems
+Content-Type: application/json
+
+{
+  "name":"walk the dog",
+  "isComplete":true
+}
+
+###
+
+GET {{MinimalApiExercise_HostAddress}}/todoitems
+
+###
+
+GET {{MinimalApiExercise_HostAddress}}/todoitems/1
+
+###
+
+GET {{MinimalApiExercise_HostAddress}}/todoitems/complete
+
+###
+
+PUT {{MinimalApiExercise_HostAddress}}/todoitems/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "feed fish",
+  "isComplete": false
+}
+
+###
+
+DELETE {{MinimalApiExercise_HostAddress}}/todoitems/1
+
+###
