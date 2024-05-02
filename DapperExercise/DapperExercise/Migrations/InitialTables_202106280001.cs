@@ -8,17 +8,17 @@ namespace DapperExercise.Migrations
         public override void Up()
         {
             Create.Table("Company")
-                .WithColumn("Id").AsGuid().PrimaryKey()
+                .WithColumn("Id").AsInt32().PrimaryKey()
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Address").AsString(255).NotNullable()
                 .WithColumn("Country").AsString(255).NotNullable();
 
             Create.Table("Employee")
-                .WithColumn("Id").AsGuid().PrimaryKey()
+                .WithColumn("Id").AsInt32().PrimaryKey()
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Age").AsInt32().NotNullable()
                 .WithColumn("Position").AsString(255).NotNullable()
-                .WithColumn("CompanyId").AsGuid().NotNullable().ForeignKey("Company", "Id");
+                .WithColumn("CompanyId").AsInt32().NotNullable().ForeignKey("Company", "Id");
         }
 
         public override void Down()

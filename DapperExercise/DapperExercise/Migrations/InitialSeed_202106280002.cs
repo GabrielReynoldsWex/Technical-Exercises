@@ -11,16 +11,16 @@ namespace DapperExercise.Migrations
             Delete.FromTable("Employee")
                 .Row(new Employee
                 {
-                    Id = new Guid("59c0d403-71ce-4ac8-9c2c-b0e54e7c043b"),
+                    Id = 1,
                     Age = 34,
                     Name = "Test Employee",
                     Position = "Test Position",
-                    CompanyId = new Guid("67fbac34-1ee1-4697-b916-1748861dd275")
+                    CompanyId = 1
                 });
-            Delete.FromTable("Companies")
+            Delete.FromTable("Company")
                 .Row(new Company
                 {
-                    Id = new Guid("67fbac34-1ee1-4697-b916-1748861dd275"),
+                    Id = 1,
                     Address = "Test Address",
                     Country = "USA",
                     Name = "Test Name"
@@ -31,19 +31,19 @@ namespace DapperExercise.Migrations
             Insert.IntoTable("Company")
                 .Row(new Company
                 {
-                    Id = new Guid("67fbac34-1ee1-4697-b916-1748861dd275"),
-                    Address = "Test Address",
+                    Id = 1,
+                    Name = "Test",
+                    Address = "Test Address 2",
                     Country = "USA",
-                    Name = "Test Name"
                 });
             Insert.IntoTable("Employee")
                 .Row(new Employee
                 {
-                    Id = new Guid("59c0d403-71ce-4ac8-9c2c-b0e54e7c043b"),
+                    Id = 1,
                     Age = 34,
                     Name = "Test Employee",
                     Position = "Test Position",
-                    CompanyId = new Guid("67fbac34-1ee1-4697-b916-1748861dd275")
+                    CompanyId = 1,
                 });
         }
     }
