@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
 
-namespace DapperExercise.DapperContext
+namespace DapperExercise.Context
 {
     public class DapperContext
     {
@@ -13,7 +13,7 @@ namespace DapperExercise.DapperContext
         }
 
         public IDbConnection CreateConnection()
-            => new SqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+            => new SqlConnection(_configuration.GetConnectionString("SqlConnection"));
 
         public IDbConnection CreateMasterConnection()
             => new SqlConnection(_configuration.GetConnectionString("MasterConnection"));

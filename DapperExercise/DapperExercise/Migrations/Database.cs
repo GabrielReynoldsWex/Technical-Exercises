@@ -1,11 +1,12 @@
 ﻿using Dapper;
+using DapperExercise.Context;
 
 namespace DapperExercise.Migrations
 {
     public class Database
     {
-        private readonly DapperContext.DapperContext _dapperContext;
-        public Database(DapperContext.DapperContext dapperContext)
+        private readonly DapperContext _dapperContext;
+        public Database(DapperContext dapperContext)
         {
             _dapperContext = dapperContext;
         }
