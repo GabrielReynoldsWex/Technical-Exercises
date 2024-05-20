@@ -32,7 +32,7 @@ namespace DapperExercise.Migrations
                 .Row(new Company
                 {
                     Id = 1,
-                    Name = "Test",
+                    Name = "Test Name",
                     Address = "Test Address 2",
                     Country = "USA",
                 });
