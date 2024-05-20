@@ -10,5 +10,8 @@ namespace DapperExercise.Contracts
         public Task<Company> CreateCompany(CompanyForCreationDTO company);
         public Task UpdateCompany(int id, CompanyForUpdateDTO company);
         public Task DeleteCompany(int id);
+        public Task<Company> GetCompanyByEmployeeId(int id);
+        public Task<Company> GetCompanyEmployeesMultipleResults(int id);
+        public Task<List<Company>> GetCompanyEmployeesMultipleMapping();
     }
 }

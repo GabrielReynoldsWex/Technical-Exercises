@@ -82,6 +82,7 @@ namespace DapperExercise.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
         [HttpDelete("{id}", Name = "DeleteCompany")]
         public async Task<IActionResult> DeleteCompany(int id)
         {
@@ -92,6 +93,55 @@ namespace DapperExercise.Controllers
                     return NotFound();
                 await _companyRepo.DeleteCompany(id);
                 return NoContent();
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("GetCompanyByEmployeeId/{id}")]
+        public async Task<IActionResult> GetCompanyByEmployeeId(int id)
+        {
+            try
+            {
+                var company = await _companyRepo.GetCompanyByEmployeeId(id);
+                if (company.Equals(null))
+                    return NotFound();
+                return Ok(company);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("GetEmployeesByCompanyId/{id}")]
+        public async Task<IActionResult> GetCompanyEmployeesMultipleResult(int id)
+        {
+            try
+            {
+                var company = await _companyRepo.GetCompanyEmployeesMultipleResults(id);
+                if (company == null)
+                    return NotFound();
+                return Ok(company);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("MultipleMapping")]
+        public async Task<IActionResult> GetCompaniesEmployeesMultipleMapping()
+        {
+            try
+            {
+                var company = await _companyRepo.GetCompanyEmployeesMultipleMapping();
+                return Ok(company);
             }
             catch (Exception ex)
             {

@@ -1,5 +1,6 @@
 ﻿using DapperExercise.Entities;
 using FluentMigrator;
+using FluentMigrator.SqlServer;
 
 namespace DapperExercise.Migrations
 {
@@ -29,6 +30,7 @@ namespace DapperExercise.Migrations
         public override void Up()
         {
             Insert.IntoTable("Company")
+                .WithIdentityInsert()
                 .Row(new Company
                 {
                     Id = 1,
@@ -37,6 +39,7 @@ namespace DapperExercise.Migrations
                     Country = "USA",
                 });
             Insert.IntoTable("Employee")
+                .WithIdentityInsert()
                 .Row(new Employee
                 {
                     Id = 1,

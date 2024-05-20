@@ -8,13 +8,13 @@ namespace DapperExercise.Migrations
         public override void Up()
         {
             Create.Table("Company")
-                .WithColumn("Id").AsInt32().Identity().PrimaryKey().NotNullable()
+                .WithColumn("Id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Address").AsString(255).NotNullable()
                 .WithColumn("Country").AsString(255).NotNullable();
 
             Create.Table("Employee")
-                .WithColumn("Id").AsInt32().Identity().PrimaryKey().NotNullable()
+                .WithColumn("Id").AsInt32().Identity().PrimaryKey()
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Age").AsInt32().NotNullable()
                 .WithColumn("Position").AsString(255).NotNullable()

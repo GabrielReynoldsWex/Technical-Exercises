@@ -1,4 +1,5 @@
-﻿namespace DapperExercise.Entities
+﻿
+namespace DapperExercise.Entities
 {
     public class Company
     {
@@ -6,5 +7,6 @@
         public string Name { get; set; }
         public string Address { get; set; }
         public string Country { get; set; }
+        public List<Employee> Employees { get; set; } = new List<Employee>();
     }
 }

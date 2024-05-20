@@ -5,79 +5,127 @@ using DapperExercise.Entities;
 using DapperExercise.DTO;
 using System.Data;
 
-namespace DapperExercise.Repository
+namespace DapperExercise.Repository;
+
+public class CompanyRepository : ICompanyRepository
 {
-    public class CompanyRepository : ICompanyRepository
+    private readonly DapperContext _context;
+
+    public CompanyRepository(DapperContext context)
     {
-        private readonly DapperContext _context;
+        _context = context;
+    }
 
-        public CompanyRepository(DapperContext context)
+    public async Task<IEnumerable<Company>> GetCompanies()
+    {
+        // Using alias companyName
+        const string query = "SELECT Id, Name AS CompanyName, Address, Country FROM Company";
+
+        using var connection = _context.CreateConnection();
+        var companies = await connection.QueryAsync<Company>(query);
+        return companies.ToList();
+    }
+
+    public async Task<IEnumerable<Company>> GetCompanyById(int id)
+    {
+        const string query = "SELECT * FROM Company WHERE Id = @Id";
+
+        using var connection = _context.CreateConnection();
+        var company = await connection.QueryAsync<Company>(query, new { Id = id });
+        return company;
+    }
+
+    public async Task<Company> CreateCompany(CompanyForCreationDTO company)
+    {
+        const string query = "INSERT INTO Company (Name, Address, Country) VALUES (@Name, @Address, @Country)" +
+                    "SELECT CAST(SCOPE_IDENTITY() as int)";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("Name", company.Name, DbType.String);
+        parameters.Add("Address", company.Address, DbType.String);
+        parameters.Add("Country", company.Country, DbType.String);
+
+        using var connection = _context.CreateConnection();
+        var id = await connection.QuerySingleAsync<int>(query, parameters);
+
+        var createdCompany = new Company
         {
-            _context = context;
-        }
+            Id = id,
+            Name = company.Name,
+            Address = company.Address,
+            Country = company.Country
+        };
+        return createdCompany;
+    }
 
-        public async Task<IEnumerable<Company>> GetCompanies()
-        {
-            // Using alias companyName
-            var query = "SELECT Id, Name AS CompanyName, Address, Country FROM Company";
+    public async Task UpdateCompany(int id, CompanyForUpdateDTO company)
+    {
+        const string query = "UPDATE Company SET Name = @Name, Address = @Address, Country = @Country WHERE Id = @Id";
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id, DbType.Int32);
+        parameters.Add("Name", company.Name, DbType.String);
+        parameters.Add("Address", company.Address, DbType.String);
+        parameters.Add("Country", company.Country, DbType.String);
 
-            using var connection = _context.CreateConnection();
-            var companies = await connection.QueryAsync<Company>(query);
-            return companies.ToList();
-        }
+        using var connection = _context.CreateConnection();
+        await connection.ExecuteAsync(query, parameters);
+    }
 
-        public async Task<IEnumerable<Company>> GetCompanyById(int id)
-        {
-            var query = "SELECT * FROM Company WHERE Id = @Id";
+    public async Task DeleteCompany(int id)
+    {
+        const string query = "DELETE FROM Company WHERE Id = @Id";
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id, DbType.Int32);
 
-            using var connection = _context.CreateConnection();
-            var company = await connection.QueryAsync<Company>(query, new { Id = id });
-            return company;
-        }
-        public async Task<Company> CreateCompany(CompanyForCreationDTO company)
-        {
-            var query = "INSERT INTO Company (Name, Address, Country) VALUES (@Name, @Address, @Country)" +
-                       "SELECT CAST(SCOPE_IDENTITY() as int)";
+        using var connection = _context.CreateConnection();
+        await connection.ExecuteAsync(query, parameters);
+    }
 
-            var parameters = new DynamicParameters();
-            parameters.Add("Name", company.Name, DbType.String);
-            parameters.Add("Address", company.Address, DbType.String);
-            parameters.Add("Country", company.Country, DbType.String);
+    public async Task<Company> GetCompanyByEmployeeId(int id)
+    {
+        const string procedureName = "ShowCompanyForProvidedEmployeeId";
+        var parameters = new DynamicParameters();
+        parameters.Add("Id", id, DbType.Int32, ParameterDirection.Input);
 
-            using var connection = _context.CreateConnection();
-            var id = await connection.QuerySingleAsync<int>(query, parameters);
+        using var connection = _context.CreateConnection();
+        var company = await connection.QueryFirstOrDefaultAsync<Company>
+            (procedureName, parameters, commandType: CommandType.StoredProcedure);
 
-            var createdCompany = new Company
+        return company;
+    }
+
+    public async Task<Company> GetCompanyEmployeesMultipleResults(int id)
+    {
+        const string query = "SELECT * FROM Company WHERE Id = @Id; SELECT * FROM Employee WHERE CompanyId = @Id";
+
+        using var connection = _context.CreateConnection();
+        await using var multi = await connection.QueryMultipleAsync(query, new { Id = id });
+
+        var company = multi.ReadFirstOrDefault<Company>();
+        var employees = multi.Read<Employee>();
+
+        company.Employees = employees.ToList();
+        return company;
+    }
+
+    public async Task<List<Company>> GetCompanyEmployeesMultipleMapping()
+    {
+        const string query = "SELECT * FROM Company c JOIN Employee e ON c.Id = e.CompanyId";
+        using var connection = _context.CreateConnection();
+        var companyDict = new Dictionary<int, Company>();
+        var companies = await connection.QueryAsync<Company, Employee, Company>(
+            query, (company, employee) =>
             {
-                Id = id,
-                Name = company.Name,
-                Address = company.Address,
-                Country = company.Country
-            };
-            return createdCompany;
-        }
+                if (!companyDict.TryGetValue(company.Id, out var currentCompany))
+                {
+                    currentCompany = company;
+                    companyDict.Add(currentCompany.Id, currentCompany);
+                }
 
-        public async Task UpdateCompany(int id, CompanyForUpdateDTO company)
-        {
-            var query = "UPDATE Company SET Name = @Name, Address = @Address, Country = @Country WHERE Id = @Id";
-            var parameters = new DynamicParameters();
-            parameters.Add("Id", id, DbType.Int32);
-            parameters.Add("Name", company.Name, DbType.String);
-            parameters.Add("Address", company.Address, DbType.String);
-            parameters.Add("Country", company.Country, DbType.String);
-
-            using var connection = _context.CreateConnection();
-            await connection.ExecuteAsync(query, parameters);
-        }
-
-        public async Task DeleteCompany(int id)
-        {
-            var query = "DELETE FROM Company WHERE Id = @Id";
-            var parameters = new DynamicParameters();
-            parameters.Add("Id", id, DbType.Int32);
-
-            using var connection = _context.CreateConnection();
-            await connection.ExecuteAsync(query, parameters);
-        }
+                currentCompany.Employees.Add(employee);
+                return currentCompany;
+            }
+        );
+        return companies.Distinct().ToList();
     }
 }
